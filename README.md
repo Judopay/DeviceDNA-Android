@@ -19,7 +19,7 @@ allprojects {
 
 ##### 2. Add DeviceDNA as a dependency in your app's build.gradle file:
 ```groovy
-compile 'com.judopay:device-dna:0.1'
+compile 'com.judopay:device-dna:0.1.1'
 ```
 
 ##### 3. Initialize DeviceDNA with your Judo account details:
