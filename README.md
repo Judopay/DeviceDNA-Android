@@ -52,9 +52,9 @@ deviceDna.getDeviceProfile(deviceId)
         .subscribe(new Action1<JsonObject>() {
             @Override
             public void call(JsonObject json) {
-                String identityScore = json.getAsString("IdentityScore");
-                String createdAt = json.getAsString("CreatedAt");
-                String lastSeen = json.getAsString("LastSeen");
+                String identityScore = json.get("IdentityScore").getAsString();
+                String createdAt = json.get("CreatedAt").getAsString();
+                String lastSeen = json.get("LastSeen").getAsString();
             }
         });
 ```
