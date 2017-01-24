@@ -6,11 +6,10 @@ The DeviceDNA Android library allows you to identify devices using the Judopay G
 
 ### Step 1: Initialize DeviceDNA
 
-##### 1. Add the Judopay maven repository to your root build.gradle fileMM
+##### 1. Add the Judopay Maven repository to your root build.gradle file:
 ```groovy
 allprojects {
     repositories {
-        jcenter()
         maven {
             url "http://dl.bintray.com/judopay/maven"
         }
