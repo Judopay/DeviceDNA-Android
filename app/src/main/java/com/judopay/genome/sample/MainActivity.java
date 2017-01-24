@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Credentials credentials = new Credentials("xvTWcOyTn1ib5vvR", "73a577a8dff2459c57461598046bdce22fc1aa89dec75292899a6d33f3af273c");
+        Credentials credentials = new Credentials("<TOKEN>", "<SECRET>");
         final DeviceDna deviceDna = new DeviceDna(this, credentials);
 
         TextView identityScoreText = (TextView) findViewById(R.id.identity_score_text);
