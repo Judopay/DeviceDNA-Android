@@ -58,7 +58,7 @@ deviceDna.getDeviceProfile(deviceId)
             }
         });
 ```
-## Device signals for server to server fraud prevention
+### Device signals for server to server fraud prevention
 When performing server to server payments using the Judopay API, you may wish to identify the device at the time of payment. To obtain the device signals necessary for fraud prevention, use DeviceDNA to obtain the encrypted signals which will be passed in the ```clientDetails``` JSON field of the request body:
 
 ```java
