@@ -94,6 +94,7 @@ deviceDna.identifyDevice()
 
 #### 3. Send the fields to your server and include with the payment request:
 Add the ```key```, ```value``` and ```deviceIdentifer``` in the ```clientDetails``` field of the request.
+
 Example JSON
 ```json
 {
