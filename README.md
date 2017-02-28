@@ -98,7 +98,7 @@ Example:
 {
 "clientDetails": {
     "key": "m815g6LdYB973ks9DbA==",
-    "value": "fjfjLluVOT0wJ7cMO8vv00wK7RCSgyOPAKq3M0ghTJUwqfOzSKsegbulkfeJVqsULrtd6Osio4Ra0mwKEpdK7YsbA==",
+    "value": "fjfjLluVOT0wJ7cMO8vv00qsULrtd6Osio4Ra0mwKEpdK7YsbA==",
     "deviceIdentifier" : "77dc2ee3-8d78-4051-b2ad-fb99e742d53d"
     }
 }
