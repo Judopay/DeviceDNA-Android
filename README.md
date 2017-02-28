@@ -64,7 +64,7 @@ Device DNA can be used for identifying the device for fraud prevention when perf
 
 When performing server to server payments using the Judopay API, you may wish to identify the device at the time of payment. To obtain the device signals necessary for fraud prevention, use DeviceDNA to obtain the encrypted signals which will be passed in the ```clientDetails``` JSON field of the request body:
 
-### Step 1: Retrieve the device signals
+#### 1. Retrieve the device signals
 Retrieve the "key" and "value" representing the device at the time the user triggers the action that will send a request to your API:
 
 ```java
@@ -73,12 +73,12 @@ String key = deviceSignals.get("key");
 String value = deviceSignals.get("value");
 ```
 
-### Step 2: Call to Device DNA to retrieve the deviceId:
+#### 2. Call to Device DNA to retrieve the deviceId:
 ```java
 String deviceId = deviceDna.identifyDevice().toBlocking().value();
 ```
 
-### Step 3: Add the device identifiers when calling the Judo API:
+#### 3. Add the device identifiers when calling the Judo API:
 ```json
 {
 "clientDetails": {
