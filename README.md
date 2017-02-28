@@ -68,9 +68,16 @@ Follow the steps for integrating Device DNA as per the [Getting Started guide](#
 Retrieve the "key" and "value" representing the device at the time the user triggers the action that will result in a server to server payment on your server:
 
 ```java
-Map<String,String> deviceSignals = deviceDna.deviceSignals();
-String key = deviceSignals.get("key");
-String value = deviceSignals.get("value");
+deviceDna.deviceSignals()
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(new Action1<String>() {
+            @Override
+            public void call(Map<String, String> deviceSignals) {
+                String key = deviceSignals.get("key");
+                String value = deviceSignals.get("value");
+            }
+        });
 ```
 
 #### 2. Call to Device DNA to retrieve the deviceId:
@@ -81,9 +88,7 @@ deviceDna.identifyDevice()
         .subscribe(new Action1<String>() {
             @Override
             public void call(String deviceId) {
-                String identityScore = json.get("IdentityScore").getAsString();
-                String createdAt = json.get("CreatedAt").getAsString();
-                String lastSeen = json.get("LastSeen").getAsString();
+                // use deviceId
             }
         });
 ```
