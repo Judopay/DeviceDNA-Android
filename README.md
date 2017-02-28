@@ -62,6 +62,8 @@ deviceDna.getDeviceProfile(deviceId)
 ## Server to server fraud prevention
 Device DNA can be used for identifying the device for fraud prevention when performing server to server payments.
 
+Follow the steps for integrating Device DNA as per the (Getting Started guide)[#Getting-Started]
+
 #### 1. Retrieve the device signals
 Retrieve the "key" and "value" representing the device at the time the user triggers the action that will result in a server to server payment on your server:
 
@@ -73,7 +75,17 @@ String value = deviceSignals.get("value");
 
 #### 2. Call to Device DNA to retrieve the deviceId:
 ```java
-String deviceId = deviceDna.identifyDevice().toBlocking().value();
+deviceDna.identifyDevice()
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(new Action1<String>() {
+            @Override
+            public void call(String deviceId) {
+                String identityScore = json.get("IdentityScore").getAsString();
+                String createdAt = json.get("CreatedAt").getAsString();
+                String lastSeen = json.get("LastSeen").getAsString();
+            }
+        });
 ```
 
 #### 3. Add the device identifiers when calling the Judo API:
