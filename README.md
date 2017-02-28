@@ -65,7 +65,7 @@ Device DNA can be used for identifying the device for fraud prevention when perf
 Follow the steps for integrating Device DNA as per the [Getting Started guide](#getting-started).
 
 #### 1. Retrieve the device signals
-Retrieve the "key" and "value" representing the device at the time the user triggers the action that will result in a server to server payment on your server:
+Retrieve the ```key``` and ```value``` representing the device at the time the user triggers the action that will result in a server to server payment on your server:
 
 ```java
 deviceDna.deviceSignals()
