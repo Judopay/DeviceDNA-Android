@@ -1,10 +1,10 @@
 # Genome Sample Android [ ![Download](https://api.bintray.com/packages/judopay/maven/device-dna/images/download.svg) ](https://bintray.com/judopay/maven/device-dna/_latestVersion)
 
-The DeviceDNA Android library allows you to identify devices using the Judopay Genome service
+The Device DNA Android library allows you to identify devices using the Judopay Genome service
 
 ## Getting Started
 
-### Step 1: Initialize DeviceDNA
+### Step 1: Initialize Device DNA
 
 ##### 1. Add the Judopay Maven repository to your root build.gradle file:
 ```groovy
@@ -17,12 +17,12 @@ allprojects {
 }
 ```
 
-##### 2. Add DeviceDNA as a dependency in your app's build.gradle file:
+##### 2. Add Device DNA as a dependency in your app's build.gradle file:
 ```groovy
 compile 'com.judopay:device-dna:0.5'
 ```
 
-##### 3. Initialize DeviceDNA with your Judo account details:
+##### 3. Initialize Device DNA with your Judopay credentials:
 ```java
 Credentials credentials = new Credentials("<TOKEN>", "<SECRET>");
 DeviceDna deviceDna = new DeviceDna(this, credentials);
@@ -30,7 +30,7 @@ DeviceDna deviceDna = new DeviceDna(this, credentials);
 
 ### Step 2: Identify a device
 
-##### Call DeviceDNA to identify the device, this returns an RxJava ```Single<String>``` containing the deviceId:
+##### Call Device DNA to identify the device, this returns an RxJava ```Single<String>``` containing the deviceId:
 ```java
 deviceDna.identifyDevice()
         .observeOn(AndroidSchedulers.mainThread())
@@ -58,12 +58,33 @@ deviceDna.getDeviceProfile(deviceId)
             }
         });
 ```
---------------------------
-### Device signals for server to server fraud prevention
+
+## Server to server fraud prevention
+Device DNA can be used for identifying the device for fraud prevention when performing server to server payments.
+
 When performing server to server payments using the Judopay API, you may wish to identify the device at the time of payment. To obtain the device signals necessary for fraud prevention, use DeviceDNA to obtain the encrypted signals which will be passed in the ```clientDetails``` JSON field of the request body:
+
+### Step 1: Retrieve the device signals
+Retrieve the "key" and "value" representing the device at the time the user triggers the action that will send a request to your API:
 
 ```java
 Map<String,String> deviceSignals = deviceDna.deviceSignals();
 String key = deviceSignals.get("key");
 String value = deviceSignals.get("value");
+```
+
+### Step 2: Call to Device DNA to retrieve the deviceId:
+```java
+String deviceId = deviceDna.identifyDevice().toBlocking().value();
+```
+
+### Step 3: Add the device identifiers when calling the Judo API:
+```json
+{
+"clientDetails": {
+    "key": "",
+    "value": "",
+    "deviceIdentifier" : "77dc2ee3-8d78-4051-b2ad-fb99e742d53d"
+    }
+}
 ```
