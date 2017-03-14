@@ -1,6 +1,6 @@
-# Genome Sample Android [ ![Download](https://api.bintray.com/packages/judopay/maven/device-dna/images/download.svg) ](https://bintray.com/judopay/maven/device-dna/_latestVersion)
+# Device DNA Android [ ![Download](https://api.bintray.com/packages/judopay/maven/device-dna/images/download.svg) ](https://bintray.com/judopay/maven/device-dna/_latestVersion)
 
-The Device DNA Android library allows you to identify devices using the Judopay Genome service
+The Device DNA Android library allows you to identify devices using the Judopay's platform.
 
 ## Getting Started
 
