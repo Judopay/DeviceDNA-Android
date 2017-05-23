@@ -39,7 +39,7 @@ Retrieve the ```key``` and ```value``` from the device at the time the user trig
 deviceDna.deviceSignals()
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
-        .subscribe(new Action1<String>() {
+        .subscribe(new Action1<Map<String, String>>() {
             @Override
             public void call(Map<String, String> deviceSignals) {
                 String key = deviceSignals.get("key");
