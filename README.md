@@ -4,7 +4,7 @@ The Device DNA Android library allows you to identify devices using the Judopay'
 
 ## Getting Started
 
-### Step 1: Initialize Device DNA
+### Initialize Device DNA
 
 ##### 1. Add the Judopay Maven repository to your root build.gradle file:
 ```groovy
@@ -19,44 +19,13 @@ allprojects {
 
 ##### 2. Add Device DNA as a dependency in your app's build.gradle file:
 ```groovy
-compile 'com.judopay:device-dna:0.6+'
+compile 'com.judopay:device-dna:0.9+'
 ```
 
 ##### 3. Initialize Device DNA with your Judopay credentials:
 ```java
 Credentials credentials = new Credentials("<TOKEN>", "<SECRET>");
 DeviceDna deviceDna = new DeviceDna(this, credentials);
-```
-
-### Step 2: Identify a device
-
-##### Call Device DNA to identify the device, this returns an RxJava ```Single<String>``` containing the deviceId:
-```java
-deviceDna.identifyDevice()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe(new Action1<String>() {
-            @Override
-            public void call(String deviceId) {
-                // unique deviceId
-            }
-        });
-```
-
-### Step 3: Check the device profile
-##### Using the ```deviceId``` returned in step 2, call to retrieve the device profile
-```java
-deviceDna.getDeviceProfile(deviceId)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe(new Action1<JsonObject>() {
-            @Override
-            public void call(JsonObject json) {
-                String identityScore = json.get("IdentityScore").getAsString();
-                String createdAt = json.get("CreatedAt").getAsString();
-                String lastSeen = json.get("LastSeen").getAsString();
-            }
-        });
 ```
 
 ## Server to server fraud prevention
